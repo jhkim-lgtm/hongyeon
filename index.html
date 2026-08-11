@@ -72,7 +72,7 @@
       }
       .intro-logo { width: 92px; height: 92px; flex: 0 0 auto; margin-bottom: 20px; }
       .intro .kicker { margin: 0; }
-      .intro h1 { margin: 15px 0 16px; font-size: clamp(44px, 7.4vw, 68px); }
+      .intro h1 { margin: 15px 0 16px; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.3; letter-spacing: -.015em; word-break: keep-all; }
       .intro-copy { max-width: 650px; margin: 0 auto; color: #d2c5c8; font-size: 17px; line-height: 1.55; }
       .intro-steps {
         display: grid;
@@ -131,7 +131,7 @@
       .logo { width: 84px; height: 84px; }
       .brand-copy { position: relative; z-index: 1; max-width: 430px; }
       .kicker { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
-      h1 { margin: 18px 0; overflow-wrap: anywhere; font-size: clamp(42px, 5.2vw, 70px); line-height: 1.02; letter-spacing: -.045em; }
+      h1 { margin: 18px 0; overflow-wrap: anywhere; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.28; letter-spacing: -.02em; word-break: keep-all; }
       .brand p { color: #d2c5c8; font-size: 17px; line-height: 1.55; }
       .perks { display: grid; gap: 10px; margin-top: 30px; color: #e9dfe2; font-size: 14px; }
       .brand-foot { color: #7c6f72; font-size: 12px; }
@@ -267,7 +267,7 @@
         .intro { height: 100svh; padding: 26px 22px max(24px, env(safe-area-inset-bottom)); }
         .intro-card { width: 100%; align-items: center; justify-content: center; }
         .intro-logo { width: 76px; height: 76px; margin-bottom: 14px; }
-        .intro h1 { margin: 10px 0 12px; font-size: clamp(36px, 10.5vw, 46px); }
+        .intro h1 { margin: 10px 0 12px; font-size: clamp(25px, 6.6vw, 32px); line-height: 1.32; }
         .intro-copy { font-size: 15px; }
         .intro-steps { gap: 10px; margin: 20px auto; font-size: 13.5px; }
         .cta-kakao { min-height: 56px; }
@@ -290,19 +290,19 @@
     <section class="intro" id="intro">
       <div class="intro-card">
         <svg class="intro-logo" viewBox="0 0 96 96" fill="none" aria-label="홍연 로고">
-          <circle cx="48" cy="48" r="44" stroke="#ff8d9a" stroke-width="2.5" opacity=".85"/>
-          <path d="M20 62c14-26 26 8 38-14 6-11 14-12 18-6" stroke="#e05263" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <circle cx="20" cy="62" r="4" fill="#ff8d9a"/>
-          <circle cx="76" cy="42" r="4" fill="#ff8d9a"/>
+          <circle cx="48" cy="48" r="45" stroke="#ff8d9a" stroke-width="1" opacity=".7"/>
+          <path d="M22 56 C 34 38, 40 62, 50 48 S 66 34, 74 42" stroke="#e05263" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+          <circle cx="22" cy="56" r="2.6" fill="#ff8d9a"/>
+          <circle cx="74" cy="42" r="2.6" fill="#ff8d9a"/>
         </svg>
         <div class="kicker">紅緣 · 사주 매칭 소개팅</div>
-        <h1>운명은,<br />이미 연결되어 있다</h1>
-        <p class="intro-copy">홍연은 아무나 소개하지 않습니다. 믿을 수 있는 인연만 잇습니다.</p>
+        <h1>“그 쪽이 저랑 사주가<br />그렇게 잘 맞는다면서요?”</h1>
+        <p class="intro-copy">홍연은 아무나 소개하지 않습니다. 최고의 궁합끼리만 연결합니다.</p>
         <div class="intro-steps">
           <span><b>01</b>내 지인의 친구들, 검증된 사람들 중에서</span>
           <span><b>02</b>사주 궁합으로 나와 천생연분인 단 한 사람을 찾아</span>
-          <span><b>03</b>매일 카카오톡으로 인연 카드를 보내드립니다</span>
-          <span><b>04</b>얼굴까지 마음에 들면 — 바로 만남으로 연결해드려요</span>
+          <span><b>03</b>카카오톡으로 인연 카드를 보내드립니다</span>
+          <span><b>04</b>사주도 외모도 내 이상형, 홍연에서 만나 보세요</span>
         </div>
         <button class="cta-kakao" type="button" id="kakao-login">
           <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C6.48 3 2 6.48 2 10.77c0 2.76 1.85 5.18 4.64 6.55l-.95 3.51c-.08.31.27.56.54.38l4.18-2.77c.52.07 1.05.11 1.59.11 5.52 0 10-3.48 10-7.78S17.52 3 12 3z" fill="#191600"/></svg>
@@ -317,8 +317,8 @@
       <aside class="brand">
         <div class="brand-copy">
           <div class="kicker">紅緣 · 사주 매칭 소개팅</div>
-          <h1>운명은,<br />이미 연결되어 있다</h1>
-          <p>내 친구의 친구 중, 사주가 점지한 단 한 사람. 매일 카카오톡으로 인연 카드가 도착합니다.</p>
+          <h1>“그 쪽이 저랑 사주가<br />그렇게 잘 맞는다면서요?”</h1>
+          <p>홍연은 아무나 소개하지 않습니다. 최고의 궁합끼리만 연결합니다.</p>
           <div class="perks">
             <span>🧧 정통 사주팔자 기반 궁합 분석</span>
             <span>🤝 지인 네트워크로 검증된 사람들</span>
