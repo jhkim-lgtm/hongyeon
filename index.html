@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>홍연 紅緣 — 내 친구의 친구 중, 사주가 점지한 단 한 사람</title>
+    <meta name="description" content="지인의 친구 중에서 나와 사주 궁합이 가장 잘 맞는 단 한 사람을 매일 카카오톡으로 소개받으세요." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jhkim-lgtm.github.io/hongyeon/" />
+    <meta property="og:title" content="홍연 紅緣 — 사주가 점지한 인연" />
+    <meta property="og:description" content="내 친구의 친구 중, 사주 궁합이 가장 잘 맞는 단 한 사람을 매일 카카오톡으로." />
+    <meta property="og:image" content="https://jhkim-lgtm.github.io/hongyeon/og-1200x630.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#050608" />
+    <meta name="robots" content="noindex" />
+
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", Arial, sans-serif;
+        --bg: #050608;
+        --panel: #0c0e12;
+        --line: #242832;
+        --muted: #959ba8;
+        --accent: #ff8d9a;
+        --accent-deep: #e05263;
+        --white: #f7f8fb;
+        --kakao: #fee500;
+      }
+      * { box-sizing: border-box; }
+      html { background: var(--bg); }
+      body { margin: 0; min-height: 100vh; overflow-x: hidden; background: var(--bg); color: var(--white); }
+      button, input, textarea { font: inherit; }
+      button { cursor: pointer; }
+
+      .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: clamp(32px, 6vh, 64px) clamp(24px, 6vw, 72px);
+        background: radial-gradient(circle at 16% 5%, #3b1822 0, #140a0d 34%, #050608 72%);
+        text-align: center;
+      }
+      .intro::after {
+        content: "";
+        position: absolute;
+        width: min(640px, 120vw);
+        aspect-ratio: 1;
+        left: min(-320px, -45vw);
+        bottom: min(-390px, -42vw);
+        border: 1px solid rgba(255, 141, 154, .28);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .intro-card {
+        position: relative;
+        z-index: 1;
+        width: min(760px, 100%);
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .intro-logo { width: 92px; height: 92px; flex: 0 0 auto; margin-bottom: 20px; }
+      .intro .kicker { margin: 0; }
+      .intro h1 { margin: 15px 0 16px; font-size: clamp(44px, 7.4vw, 68px); }
+      .intro-copy { max-width: 650px; margin: 0 auto; color: #d2c5c8; font-size: 17px; line-height: 1.55; }
+      .intro-steps {
+        display: grid;
+        justify-items: start;
+        gap: 13px;
+        margin: 28px auto;
+        color: #f1f2f5;
+        font-size: 15px;
+        line-height: 1.45;
+        text-align: left;
+      }
+      .intro-steps span { display: flex; gap: 11px; align-items: flex-start; }
+      .intro-steps b { color: var(--accent); font-weight: 800; flex: 0 0 auto; }
+      .cta-kakao {
+        width: min(640px, 100%);
+        min-height: 60px;
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--kakao);
+        color: #191600;
+        font-size: 17px;
+        font-weight: 800;
+      }
+      .cta-kakao svg { width: 22px; height: 22px; flex: 0 0 auto; }
+      .intro-note { width: 100%; margin: 14px 0 0; color: #7c6f72; font-size: 12px; text-align: center; }
+      .dev-note { margin-top: 10px; color: #55414f; font-size: 11px; }
+      .dev-note button { border: 0; background: none; color: #6f5560; font-size: 11px; text-decoration: underline; }
+
+      .shell { min-height: 100vh; display: grid; grid-template-columns: minmax(290px, .8fr) minmax(480px, 1.2fr); }
+      .brand {
+        position: relative;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 48px;
+        overflow: hidden;
+        border-right: 1px solid var(--line);
+        background: radial-gradient(circle at 20% 15%, #3e1822 0, #160b0e 34%, #050608 72%);
+      }
+      .brand::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        left: -270px;
+        bottom: -280px;
+        border: 1px solid rgba(255,141,154,.25);
+        border-radius: 50%;
+      }
+      .logo { width: 84px; height: 84px; }
+      .brand-copy { position: relative; z-index: 1; max-width: 430px; }
+      .kicker { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+      h1 { margin: 18px 0; overflow-wrap: anywhere; font-size: clamp(42px, 5.2vw, 70px); line-height: 1.02; letter-spacing: -.045em; }
+      .brand p { color: #d2c5c8; font-size: 17px; line-height: 1.55; }
+      .perks { display: grid; gap: 10px; margin-top: 30px; color: #e9dfe2; font-size: 14px; }
+      .brand-foot { color: #7c6f72; font-size: 12px; }
+      .kakao-badge {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 26px;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--panel);
+        color: #d8dbe2;
+        font-size: 13px;
+      }
+      .kakao-badge img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; background: #232633; }
+
+      .form-side { min-height: 100vh; display: flex; flex-direction: column; padding: 42px clamp(28px, 6vw, 92px); }
+      .progress-row { display: flex; align-items: center; gap: 14px; }
+      .progress-track { flex: 1; height: 3px; overflow: hidden; border-radius: 10px; background: #2b1e22; }
+      .progress-bar { width: 10%; height: 100%; background: var(--accent); transition: width .25s ease; }
+      .counter { min-width: 46px; color: var(--muted); font-size: 12px; text-align: right; }
+
+      form { flex: 1; display: flex; flex-direction: column; }
+      .step { display: none; flex: 1; flex-direction: column; justify-content: center; padding: 36px 0; animation: enter .22s ease; }
+      .step.active { display: flex; }
+      @keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+      .question-no { margin-bottom: 13px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+      h2 { margin: 0 0 10px; overflow-wrap: anywhere; font-size: clamp(27px, 3.4vw, 42px); line-height: 1.14; letter-spacing: -.03em; }
+      .hint { margin: 0 0 28px; color: var(--muted); font-size: 14px; line-height: 1.45; }
+      .field {
+        width: 100%;
+        padding: 16px 2px;
+        border: 0;
+        border-bottom: 1px solid #544147;
+        outline: 0;
+        background: transparent;
+        color: #fff;
+        font-size: 21px;
+      }
+      .field:focus { border-color: var(--accent); }
+      .field::placeholder { color: #614f54; }
+      .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .choice { position: relative; }
+      .choice input { position: absolute; opacity: 0; pointer-events: none; }
+      .choice label {
+        display: flex;
+        min-height: 58px;
+        align-items: center;
+        padding: 13px 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel);
+        color: #d8dbe2;
+        font-size: 14px;
+        line-height: 1.3;
+        transition: border-color .15s, background .15s, color .15s;
+      }
+      .choice label::before {
+        content: "";
+        width: 19px;
+        height: 19px;
+        flex: 0 0 19px;
+        display: grid;
+        place-items: center;
+        margin-right: 12px;
+        border: 1.5px solid #786269;
+        background: #0d080a;
+        color: #1f070d;
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 1;
+        transition: border-color .15s, background .15s, box-shadow .15s;
+      }
+      .choice input[type="radio"] + label::before { border-radius: 50%; }
+      .choice input[type="checkbox"] + label::before { border-radius: 5px; }
+      .choice input[type="radio"]:checked + label::before {
+        border-color: var(--accent);
+        background: var(--accent);
+        box-shadow: inset 0 0 0 4px #3b161d;
+      }
+      .choice input[type="checkbox"]:checked + label::before {
+        content: "✓";
+        border-color: var(--accent);
+        background: var(--accent);
+      }
+      .choice input:checked + label { border-color: var(--accent); background: #3b161d; color: #fff; }
+      .error { min-height: 20px; margin-top: 14px; color: #ff8d9a; font-size: 13px; }
+
+      .consent-box {
+        margin: 0 0 6px;
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel);
+        color: #b9bec9;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .consent-box b { color: #e9ebf0; }
+
+      .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 18px; }
+      .nav button {
+        min-width: 94px;
+        min-height: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 24px;
+        border-radius: 999px;
+        font-weight: 800;
+        line-height: 1;
+        text-align: center;
+      }
+      .back { border: 1px solid var(--line); background: transparent; color: #aeb3bd; }
+      .next, .submit { border: 0; background: #fff; color: #050608; }
+      .back[hidden] { visibility: hidden; display: block; }
+      .submit { display: none; }
+      .keyboard { color: #685c60; font-size: 11px; }
+
+      .success { display: none; min-height: 100vh; align-items: center; justify-content: center; padding: 38px; text-align: center; }
+      .success.visible { display: flex; }
+      .success-card { max-width: 620px; }
+      .success .mark { width: 68px; height: 68px; display: grid; place-items: center; margin: 0 auto 26px; border-radius: 50%; background: #3b161d; color: var(--accent); font-size: 30px; }
+      .success h2 { font-size: clamp(36px, 6.4vw, 60px); }
+      .success p { color: #c5b6ba; font-size: 17px; line-height: 1.6; }
+      iframe { display: none; }
+
+      @media (max-width: 820px) {
+        .intro { height: 100svh; padding: 26px 22px max(24px, env(safe-area-inset-bottom)); }
+        .intro-card { width: 100%; align-items: center; justify-content: center; }
+        .intro-logo { width: 76px; height: 76px; margin-bottom: 14px; }
+        .intro h1 { margin: 10px 0 12px; font-size: clamp(36px, 10.5vw, 46px); }
+        .intro-copy { font-size: 15px; }
+        .intro-steps { gap: 10px; margin: 20px auto; font-size: 13.5px; }
+        .cta-kakao { min-height: 56px; }
+        .shell { display: block; }
+        .brand { display: none; }
+        .form-side { width: 100%; min-width: 0; min-height: 640px; padding: 24px 22px; overflow: hidden; }
+        .step { min-width: 0; justify-content: flex-start; padding: 54px 0 24px; }
+        h2 { font-size: 27px; }
+        .choices { grid-template-columns: 1fr; }
+        .choice label { min-height: 52px; }
+        .keyboard { display: none; }
+      }
+      @media (max-width: 820px) and (min-width: 0px) {
+        .choices.time-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 카카오 로그인 게이트 + 서비스 컨셉 -->
+    <section class="intro" id="intro">
+      <div class="intro-card">
+        <svg class="intro-logo" viewBox="0 0 96 96" fill="none" aria-label="홍연 로고">
+          <circle cx="48" cy="48" r="44" stroke="#ff8d9a" stroke-width="2.5" opacity=".85"/>
+          <path d="M20 62c14-26 26 8 38-14 6-11 14-12 18-6" stroke="#e05263" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="20" cy="62" r="4" fill="#ff8d9a"/>
+          <circle cx="76" cy="42" r="4" fill="#ff8d9a"/>
+        </svg>
+        <div class="kicker">紅緣 · 사주 매칭 소개팅</div>
+        <h1>운명은,<br />이미 연결되어 있다</h1>
+        <p class="intro-copy">홍연은 아무나 소개하지 않습니다. 믿을 수 있는 인연만 잇습니다.</p>
+        <div class="intro-steps">
+          <span><b>01</b>내 지인의 친구들, 검증된 사람들 중에서</span>
+          <span><b>02</b>사주 궁합으로 나와 천생연분인 단 한 사람을 찾아</span>
+          <span><b>03</b>매일 카카오톡으로 인연 카드를 보내드립니다</span>
+          <span><b>04</b>얼굴까지 마음에 들면 — 바로 만남으로 연결해드려요</span>
+        </div>
+        <button class="cta-kakao" type="button" id="kakao-login">
+          <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C6.48 3 2 6.48 2 10.77c0 2.76 1.85 5.18 4.64 6.55l-.95 3.51c-.08.31.27.56.54.38l4.18-2.77c.52.07 1.05.11 1.59.11 5.52 0 10-3.48 10-7.78S17.52 3 12 3z" fill="#191600"/></svg>
+          카카오로 3초 만에 시작하기
+        </button>
+        <p class="intro-note">가입 즉시 사주 분석이 시작됩니다 · 프로필은 매칭 상대에게만 공개됩니다</p>
+        <p class="dev-note" id="dev-note" hidden><button type="button" id="dev-continue">카카오 없이 테스트로 계속하기</button></p>
+      </div>
+    </section>
+
+    <div class="shell" id="app" hidden>
+      <aside class="brand">
+        <div class="brand-copy">
+          <div class="kicker">紅緣 · 사주 매칭 소개팅</div>
+          <h1>운명은,<br />이미 연결되어 있다</h1>
+          <p>내 친구의 친구 중, 사주가 점지한 단 한 사람. 매일 카카오톡으로 인연 카드가 도착합니다.</p>
+          <div class="perks">
+            <span>🧧 정통 사주팔자 기반 궁합 분석</span>
+            <span>🤝 지인 네트워크로 검증된 사람들</span>
+            <span>💌 하루 한 명, 가장 잘 맞는 인연만</span>
+          </div>
+          <div class="kakao-badge" id="kakao-badge" hidden>
+            <img id="kakao-avatar" alt="" />
+            <span id="kakao-name"></span>
+          </div>
+        </div>
+        <div class="brand-foot">홍연 紅緣 · 사주가 점지한 인연을 잇습니다</div>
+      </aside>
+
+      <section class="form-side">
+        <div class="progress-row">
+          <div class="progress-track"><div class="progress-bar" id="progress"></div></div>
+          <div class="counter" id="counter">1 / 8</div>
+        </div>
+
+        <form id="hongyeon-form" action="https://docs.google.com/forms/d/e/1FAIpQLScBchampUgy17v8NZwz_MEivM2sQiKeiuVYc2ODX98JF3sUHw/formResponse" method="post" target="submission-frame">
+          <!-- 카카오 자동 수집 히든 필드 -->
+          <input type="hidden" name="entry.1035880979" id="kakao-nickname" />
+          <input type="hidden" name="entry.1539943830" id="kakao-email" />
+          <input type="hidden" name="entry.1214580904" id="kakao-id" />
+          <input type="hidden" name="entry.1121019956" id="kakao-profile-img" />
+
+          <div class="step active" data-required="entry.1631997984">
+            <div class="question-no">01</div>
+            <h2>이름을 알려주세요</h2>
+            <p class="hint">실명으로 적어주세요. 매칭 상대에게는 첫 만남이 확정되기 전까지 공개되지 않아요.</p>
+            <input class="field" name="entry.1631997984" autocomplete="name" placeholder="홍길동" />
+            <div class="error"></div>
+          </div>
+
+          <div class="step" data-required="entry.667211417">
+            <div class="question-no">02</div>
+            <h2>성별을 선택해주세요</h2>
+            <p class="hint">이성 매칭 기준으로 인연 카드를 보내드려요.</p>
+            <div class="choices">
+              <div class="choice"><input id="g1" type="radio" name="entry.667211417" value="남성" /><label for="g1">남성</label></div>
+              <div class="choice"><input id="g2" type="radio" name="entry.667211417" value="여성" /><label for="g2">여성</label></div>
+            </div>
+            <div class="error"></div>
+          </div>
+
+          <div class="step" data-required="entry.938174224" data-type="phone">
+            <div class="question-no">03</div>
+            <h2>연락처를 알려주세요</h2>
+            <p class="hint">매칭이 성사됐을 때만 사용해요. 상대에게 함부로 공개되지 않습니다.</p>
+            <input class="field" type="tel" name="entry.938174224" autocomplete="tel" placeholder="010-0000-0000" />
+            <div class="error"></div>
+          </div>
+
+          <div class="step" data-required="entry.294138297">
+            <div class="question-no">04</div>
+            <h2>인스타그램 아이디는요?</h2>
+            <p class="hint">@ 포함으로 적어주세요. 인연 카드의 프로필 확인에 사용돼요.</p>
+            <input class="field" name="entry.294138297" autocomplete="off" placeholder="@username" />
+            <div class="error"></div>
+          </div>
+
+          <div class="step" data-required="entry.328316420">
+            <div class="question-no">05</div>
+            <h2>어디에 살고 계세요?</h2>
+            <p class="hint">가까운 지역의 인연을 우선으로 소개해드려요.</p>
+            <div class="choices">
+              <div class="choice"><input id="r1" type="radio" name="entry.328316420" value="서울" /><label for="r1">서울</label></div>
+              <div class="choice"><input id="r2" type="radio" name="entry.328316420" value="경기·인천" /><label for="r2">경기 · 인천</label></div>
+              <div class="choice"><input id="r3" type="radio" name="entry.328316420" value="부산·울산·경남" /><label for="r3">부산 · 울산 · 경남</label></div>
+              <div class="choice"><input id="r4" type="radio" name="entry.328316420" value="대구·경북" /><label for="r4">대구 · 경북</label></div>
+              <div class="choice"><input id="r5" type="radio" name="entry.328316420" value="대전·세종·충청" /><label for="r5">대전 · 세종 · 충청</label></div>
+              <div class="choice"><input id="r6" type="radio" name="entry.328316420" value="광주·전라" /><label for="r6">광주 · 전라</label></div>
+              <div class="choice"><input id="r7" type="radio" name="entry.328316420" value="강원" /><label for="r7">강원</label></div>
+              <div class="choice"><input id="r8" type="radio" name="entry.328316420" value="제주" /><label for="r8">제주</label></div>
+              <div class="choice"><input id="r9" type="radio" name="entry.328316420" value="해외" /><label for="r9">해외</label></div>
+            </div>
+            <div class="error"></div>
+          </div>
+
+          <div class="step" data-required="entry.267000997" data-type="birthdate">
+            <div class="question-no">06</div>
+            <h2>생년월일을 알려주세요</h2>
+            <p class="hint">양력 기준으로 적어주세요. 사주팔자의 년주·월주·일주를 세우는 데 쓰여요.</p>
+            <input class="field" name="entry.267000997" inputmode="numeric" autocomplete="bday" placeholder="1994.03.15" />
+            <div class="error"></div>
+          </div>
+
+          <div class="step" data-required="entry.1373720183">
+            <div class="question-no">07</div>
+            <h2>몇 시에 태어나셨나요?</h2>
+            <p class="hint">시주(時柱)까지 있어야 사주 궁합이 정확해져요. 모르시면 마지막 항목을 선택하세요.</p>
+            <div class="choices time-grid">
+              <div class="choice"><input id="t1" type="radio" name="entry.1373720183" value="자시 (23:00~00:59)" /><label for="t1">자시 23:00~00:59</label></div>
+              <div class="choice"><input id="t2" type="radio" name="entry.1373720183" value="축시 (01:00~02:59)" /><label for="t2">축시 01:00~02:59</label></div>
+              <div class="choice"><input id="t3" type="radio" name="entry.1373720183" value="인시 (03:00~04:59)" /><label for="t3">인시 03:00~04:59</label></div>
+              <div class="choice"><input id="t4" type="radio" name="entry.1373720183" value="묘시 (05:00~06:59)" /><label for="t4">묘시 05:00~06:59</label></div>
+              <div class="choice"><input id="t5" type="radio" name="entry.1373720183" value="진시 (07:00~08:59)" /><label for="t5">진시 07:00~08:59</label></div>
+              <div class="choice"><input id="t6" type="radio" name="entry.1373720183" value="사시 (09:00~10:59)" /><label for="t6">사시 09:00~10:59</label></div>
+              <div class="choice"><input id="t7" type="radio" name="entry.1373720183" value="오시 (11:00~12:59)" /><label for="t7">오시 11:00~12:59</label></div>
+              <div class="choice"><input id="t8" type="radio" name="entry.1373720183" value="미시 (13:00~14:59)" /><label for="t8">미시 13:00~14:59</label></div>
+              <div class="choice"><input id="t9" type="radio" name="entry.1373720183" value="신시 (15:00~16:59)" /><label for="t9">신시 15:00~16:59</label></div>
+              <div class="choice"><input id="t10" type="radio" name="entry.1373720183" value="유시 (17:00~18:59)" /><label for="t10">유시 17:00~18:59</label></div>
+              <div class="choice"><input id="t11" type="radio" name="entry.1373720183" value="술시 (19:00~20:59)" /><label for="t11">술시 19:00~20:59</label></div>
+              <div class="choice"><input id="t12" type="radio" name="entry.1373720183" value="해시 (21:00~22:59)" /><label for="t12">해시 21:00~22:59</label></div>
+              <div class="choice"><input id="t13" type="radio" name="entry.1373720183" value="태어난 시각을 몰라요" /><label for="t13">태어난 시각을 몰라요</label></div>
+            </div>
+            <div class="error"></div>
+          </div>
+
+          <div class="step" data-required="entry.1451444338">
+            <div class="question-no">08</div>
+            <h2>마지막으로, 동의가 필요해요</h2>
+            <p class="hint">동의하시면 사주 분석이 시작되고, 인연 카드가 준비되는 대로 카카오톡으로 알려드려요.</p>
+            <div class="consent-box">
+              <b>개인정보 수집·이용 동의</b><br />
+              수집 항목: 이름, 성별, 연락처, 인스타그램 아이디, 거주 지역, 생년월일·태어난 시각, 카카오 계정 정보(닉네임·이메일·회원번호·프로필 이미지)<br />
+              수집 목적: 사주 궁합 분석 및 소개팅 매칭, 매칭 소식 안내(카카오톡·문자)<br />
+              보유 기간: 회원 탈퇴 또는 동의 철회 시까지 · 철회 문의: info@1percentclub.kr
+            </div>
+            <div class="choices">
+              <div class="choice"><input id="c1" type="radio" name="entry.1451444338" value="동의합니다" /><label for="c1">동의하고 매칭 시작하기</label></div>
+            </div>
+            <div class="error"></div>
+          </div>
+
+          <div class="nav">
+            <button class="back" type="button" id="back" hidden>이전</button>
+            <span class="keyboard">Enter ↵ 를 눌러도 넘어가요</span>
+            <button class="next" type="button" id="next">다음</button>
+            <button class="submit" type="submit" id="submit">사주 매칭 신청하기</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <section class="success" id="success">
+      <div class="success-card">
+        <div class="mark">🧧</div>
+        <h2>홍연이 이어지기 시작했어요</h2>
+        <p>사주 분석이 시작됐어요. 지인의 친구들 중 당신과 가장 잘 맞는 단 한 사람이 정해지면, 카카오톡으로 인연 카드를 보내드릴게요.</p>
+        <p>친구에게 홍연을 알릴수록 내 인연의 풀이 넓어집니다. 이 페이지 링크를 친구에게 공유해보세요.</p>
+      </div>
+    </section>
+
+    <iframe name="submission-frame" title="Submission target"></iframe>
+
+    <script src="config.js"></script>
+    <script>
+      const CFG = window.HONGYEON_CONFIG || {};
+      const form = document.getElementById('hongyeon-form');
+      const steps = [...document.querySelectorAll('.step')];
+      const nextButton = document.getElementById('next');
+      const backButton = document.getElementById('back');
+      const submitButton = document.getElementById('submit');
+      const progress = document.getElementById('progress');
+      const counter = document.getElementById('counter');
+      const loginButton = document.getElementById('kakao-login');
+      let current = 0;
+      let submitted = false;
+      let started = false;
+
+      /* ---------- 카카오 로그인 ---------- */
+      const REDIRECT_URI = location.origin + location.pathname;
+
+      function saveKakaoProfile(p) {
+        sessionStorage.setItem('hy_kakao', JSON.stringify(p));
+        fillKakao(p);
+      }
+
+      function fillKakao(p) {
+        document.getElementById('kakao-nickname').value = p.nickname || '';
+        document.getElementById('kakao-email').value = p.email || '';
+        document.getElementById('kakao-id').value = p.id || '';
+        document.getElementById('kakao-profile-img').value = p.profileImg || '';
+        const badge = document.getElementById('kakao-badge');
+        if (p.nickname) {
+          badge.hidden = false;
+          document.getElementById('kakao-name').textContent = p.nickname + ' 님 · 카카오 로그인 완료';
+          const avatar = document.getElementById('kakao-avatar');
+          if (p.profileImg) avatar.src = p.profileImg; else avatar.style.display = 'none';
+        }
+      }
+
+      function enterForm() {
+        started = true;
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('app').hidden = false;
+        window.scrollTo(0, 0);
+        render();
+      }
+
+      async function exchangeCode(code) {
+        const body = new URLSearchParams({
+          grant_type: 'authorization_code',
+          client_id: CFG.kakaoRestKey,
+          redirect_uri: REDIRECT_URI,
+          code
+        });
+        const tr = await fetch('https://kauth.kakao.com/oauth/token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+          body
+        }).then(r => r.json());
+        if (!tr.access_token) throw new Error(tr.error_description || 'token exchange failed');
+        const me = await fetch('https://kapi.kakao.com/v2/user/me', {
+          headers: { Authorization: 'Bearer ' + tr.access_token }
+        }).then(r => r.json());
+        const acc = me.kakao_account || {};
+        const prof = acc.profile || {};
+        return {
+          id: me.id,
+          nickname: prof.nickname || '',
+          profileImg: prof.profile_image_url || '',
+          email: acc.email || ''
+        };
+      }
+
+      async function handleReturnFromKakao() {
+        const params = new URLSearchParams(location.search);
+        const code = params.get('code');
+        if (!code) return false;
+        history.replaceState(null, '', REDIRECT_URI);
+        loginButton.disabled = true;
+        loginButton.textContent = '카카오 확인 중…';
+        try {
+          const profile = await exchangeCode(code);
+          saveKakaoProfile(profile);
+          enterForm();
+        } catch (e) {
+          loginButton.disabled = false;
+          loginButton.textContent = '카카오로 3초 만에 시작하기';
+          alert('카카오 로그인에 실패했어요. 다시 시도해주세요.\n(' + e.message + ')');
+        }
+        return true;
+      }
+
+      loginButton.addEventListener('click', () => {
+        if (!CFG.kakaoRestKey) {
+          document.getElementById('dev-note').hidden = false;
+          alert('카카오 앱 키가 아직 설정되지 않았습니다.\nconfig.js에 kakaoRestKey를 넣으면 실제 카카오 로그인이 활성화됩니다.');
+          return;
+        }
+        const scope = CFG.scopes || 'profile_nickname,profile_image';
+        location.href = 'https://kauth.kakao.com/oauth/authorize'
+          + '?client_id=' + encodeURIComponent(CFG.kakaoRestKey)
+          + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
+          + '&response_type=code'
+          + '&scope=' + encodeURIComponent(scope);
+      });
+
+      document.getElementById('dev-continue').addEventListener('click', () => {
+        saveKakaoProfile({ id: 'DEV-' + Date.now(), nickname: '(테스트)', email: '', profileImg: '' });
+        enterForm();
+      });
+
+      // 복귀 처리: 카카오 리다이렉트로 돌아온 경우 자동으로 폼 진입
+      (function init() {
+        const saved = sessionStorage.getItem('hy_kakao');
+        if (saved) fillKakao(JSON.parse(saved));
+        handleReturnFromKakao();
+        if (!CFG.kakaoRestKey) document.getElementById('dev-note').hidden = false;
+      })();
+
+      /* ---------- 스텝 폼 ---------- */
+      function valuesFor(name) {
+        return [...form.elements].filter(el => el.name === name && ((el.type === 'radio' || el.type === 'checkbox') ? el.checked : el.value.trim()));
+      }
+
+      function validate() {
+        const step = steps[current];
+        const name = step.dataset.required;
+        const error = step.querySelector('.error');
+        const selected = valuesFor(name);
+        error.textContent = '';
+        if (!selected.length && step.dataset.optional === 'true') return true;
+        if (!selected.length) {
+          error.textContent = '이 질문에 답해주셔야 다음으로 넘어갈 수 있어요.';
+          return false;
+        }
+        if (step.dataset.type === 'phone') {
+          const v = selected[0].value.replace(/[^0-9]/g, '');
+          if (v.length < 10 || v.length > 11) {
+            error.textContent = '휴대폰 번호를 정확히 입력해주세요. 예: 010-1234-5678';
+            return false;
+          }
+        }
+        if (step.dataset.type === 'birthdate') {
+          const v = selected[0].value.replace(/[^0-9]/g, '');
+          if (v.length !== 8) {
+            error.textContent = '생년월일 8자리를 입력해주세요. 예: 1994.03.15';
+            return false;
+          }
+          const y = +v.slice(0, 4), mo = +v.slice(4, 6), d = +v.slice(6, 8);
+          if (y < 1940 || y > 2010 || mo < 1 || mo > 12 || d < 1 || d > 31) {
+            error.textContent = '생년월일을 다시 확인해주세요.';
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function render() {
+        steps.forEach((step, index) => step.classList.toggle('active', index === current));
+        progress.style.width = `${((current + 1) / steps.length) * 100}%`;
+        counter.textContent = `${current + 1} / ${steps.length}`;
+        backButton.hidden = current === 0;
+        nextButton.style.display = current === steps.length - 1 ? 'none' : 'inline-flex';
+        submitButton.style.display = current === steps.length - 1 ? 'inline-flex' : 'none';
+        const firstInput = steps[current].querySelector('.field');
+        if (firstInput && !matchMedia('(max-width: 820px)').matches) setTimeout(() => firstInput.focus(), 80);
+        if (current > 0) {
+          window.scrollTo({ top: matchMedia('(max-width: 820px)').matches ? document.querySelector('.form-side').offsetTop : 0, behavior: 'smooth' });
+        }
+      }
+
+      nextButton.addEventListener('click', () => {
+        if (!validate()) return;
+        current += 1;
+        render();
+      });
+      backButton.addEventListener('click', () => {
+        current = Math.max(0, current - 1);
+        render();
+      });
+      document.addEventListener('keydown', event => {
+        if (!started) return;
+        if (event.key === 'Enter' && event.target.tagName !== 'TEXTAREA') {
+          event.preventDefault();
+          if (current === steps.length - 1) submitButton.click();
+          else nextButton.click();
+        }
+      });
+      form.addEventListener('submit', event => {
+        if (!validate() || submitted) {
+          event.preventDefault();
+          return;
+        }
+        submitted = true;
+        submitButton.disabled = true;
+        submitButton.textContent = '신청 접수 중…';
+        setTimeout(() => {
+          document.getElementById('app').style.display = 'none';
+          document.getElementById('success').classList.add('visible');
+          window.scrollTo(0, 0);
+        }, 900);
+      });
+      render();
+    </script>
+  </body>
+</html>
