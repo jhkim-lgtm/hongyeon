@@ -10,5 +10,5 @@
 // ─────────────────────────────────────────────
 window.HONGYEON_CONFIG = {
   kakaoRestKey: "3c332eaa14dace9d7a5705280ba5381b",  // ← 카카오 REST API 키
-  scopes: "profile_nickname,profile_image"  // 이메일 동의항목 설정 후 ",account_email" 추가
+  scopes: "profile_image"  // 닉네임 제외. 이메일 동의항목 설정 후 ",account_email" 추가
 };

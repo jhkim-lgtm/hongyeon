@@ -494,9 +494,9 @@
         document.getElementById('kakao-id').value = p.id || '';
         document.getElementById('kakao-profile-img').value = p.profileImg || '';
         const badge = document.getElementById('kakao-badge');
-        if (p.nickname) {
+        if (p.id) {
           badge.hidden = false;
-          document.getElementById('kakao-name').textContent = p.nickname + ' 님 · 카카오 로그인 완료';
+          document.getElementById('kakao-name').textContent = '카카오 로그인 완료';
           const avatar = document.getElementById('kakao-avatar');
           if (p.profileImg) avatar.src = p.profileImg; else avatar.style.display = 'none';
         }
