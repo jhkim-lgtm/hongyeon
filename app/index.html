@@ -214,11 +214,12 @@
     </div>
 
     <script src="saju.js"></script>
-    <script src="data.js"></script>
+    <script src="data.js?v=2"></script>
     <script>
       const ME = window.HY_ME;
       const meP = Saju.pillars(...Saju.parseBirth(ME.birth), ME.hour);
-      const state = JSON.parse(localStorage.getItem('hy_state') || '{"view":1,"send":1,"sent":[],"passed":[],"matched":[]}');
+      let state = JSON.parse(localStorage.getItem('hy_state') || 'null');
+      if (!state || state.v !== 2) state = { v: 2, view: 1, send: 1, sent: [], passed: [], matched: [] };
       const save = () => localStorage.setItem('hy_state', JSON.stringify(state));
 
       const candidates = window.HY_PROFILES

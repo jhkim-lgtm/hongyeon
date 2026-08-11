@@ -5,7 +5,7 @@
  */
 window.HY_ME = {
   name: '김준형', gender: 'M', birth: '1990.02.20', hour: 6,
-  region: '서울', insta: '@bk', job: '미디어 CEO', photo: 'https://i.pravatar.cc/400?img=12'
+  region: '서울', insta: '@bk', job: '미디어 CEO', photo: ''
 };
 
 window.HY_PROFILES = [
