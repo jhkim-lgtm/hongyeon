@@ -9,6 +9,6 @@
 // 5) 아래 kakaoRestKey 에 "REST API 키"를 붙여넣고 커밋/배포
 // ─────────────────────────────────────────────
 window.HONGYEON_CONFIG = {
-  kakaoRestKey: "",              // ← 카카오 REST API 키 (필수)
+  kakaoRestKey: "3c332eaa14dace9d7a5705280ba5381b",  // ← 카카오 REST API 키
   scopes: "profile_nickname,profile_image"  // 이메일 동의항목 설정 후 ",account_email" 추가
 };
