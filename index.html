@@ -517,6 +517,7 @@
           redirect_uri: REDIRECT_URI,
           code
         });
+        if (CFG.clientSecret) body.append('client_secret', CFG.clientSecret);
         const tr = await fetch('https://kauth.kakao.com/oauth/token', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
