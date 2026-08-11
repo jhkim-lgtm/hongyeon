@@ -9,7 +9,7 @@
 // 5) 아래 kakaoRestKey 에 "REST API 키"를 붙여넣고 커밋/배포
 // ─────────────────────────────────────────────
 window.HONGYEON_CONFIG = {
-  kakaoRestKey: "aa3842f0f848bdbb0bc1b83c589601f8",  // ← 카카오 REST API 키
+  kakaoRestKey: "3c332eaa14dace9d7a5705280ba5381b",  // ← 카카오 REST API 키
   // scopes 비움 = 동의항목 요청 없이 로그인(회원번호만 수집). KOE205 방지.
   // 콘솔 > 카카오 로그인 > 동의항목에서 '프로필 사진' 켠 뒤 "profile_image"로 바꾸면 사진도 수집.
   scopes: ""
