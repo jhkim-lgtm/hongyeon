@@ -561,12 +561,13 @@
           alert('카카오 앱 키가 아직 설정되지 않았습니다.\nconfig.js에 kakaoRestKey를 넣으면 실제 카카오 로그인이 활성화됩니다.');
           return;
         }
-        const scope = CFG.scopes || 'profile_nickname,profile_image';
-        location.href = 'https://kauth.kakao.com/oauth/authorize'
+        let url = 'https://kauth.kakao.com/oauth/authorize'
           + '?client_id=' + encodeURIComponent(CFG.kakaoRestKey)
           + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
-          + '&response_type=code'
-          + '&scope=' + encodeURIComponent(scope);
+          + '&response_type=code';
+        // scope는 앱 동의항목에 등록된 것만 요청. 비어 있으면 아예 안 보냄(KOE205 방지).
+        if (CFG.scopes) url += '&scope=' + encodeURIComponent(CFG.scopes);
+        location.href = url;
       });
 
       document.getElementById('dev-continue').addEventListener('click', () => {
