@@ -259,8 +259,8 @@
       .success.visible { display: flex; }
       .success-card { max-width: 620px; }
       .success .mark { width: 68px; height: 68px; display: grid; place-items: center; margin: 0 auto 26px; border-radius: 50%; background: #3b161d; color: var(--accent); font-size: 30px; }
-      .success h2 { font-size: clamp(36px, 6.4vw, 60px); }
-      .success p { color: #c5b6ba; font-size: 17px; line-height: 1.6; }
+      .success h2 { font-size: clamp(36px, 6.4vw, 60px); word-break: keep-all; overflow-wrap: break-word; }
+      .success p { color: #c5b6ba; font-size: 17px; line-height: 1.6; word-break: keep-all; overflow-wrap: break-word; }
       .cta-channel {
         display: inline-flex; align-items: center; justify-content: center; gap: 9px;
         margin: 22px auto 4px; padding: 15px 26px; border-radius: 999px;
@@ -329,7 +329,7 @@
           <div class="perks">
             <span>🧧 정통 사주팔자 기반 궁합 분석</span>
             <span>🤝 지인 네트워크로 검증된 사람들</span>
-            <span>💌 찰떡궁합, 가장 잘 맞는 인연만</span>
+            <span>💌 찰떡궁합인데, 외모도 내 스타일이라면<br />사주도 외모도 내 이상형을 만나보세요</span>
           </div>
           <div class="kakao-badge" id="kakao-badge" hidden>
             <img id="kakao-avatar" alt="" />
@@ -374,8 +374,8 @@
           <div class="step" data-required="entry.938174224" data-type="phone">
             <div class="question-no">03</div>
             <h2>연락처를 알려주세요</h2>
-            <p class="hint">매칭이 성사됐을 때만 사용해요. 상대에게 함부로 공개되지 않습니다.</p>
-            <input class="field" type="tel" name="entry.938174224" autocomplete="tel" placeholder="010-0000-0000" />
+            <p class="hint">매칭이 성사됐을 때만 사용해요. 상대에게 함부로 공개되지 않습니다.<br />숫자만 입력하세요 (- 는 자동으로 입력돼요)</p>
+            <input class="field" type="tel" name="entry.938174224" autocomplete="tel" placeholder="숫자만 입력하세요" />
             <div class="error"></div>
           </div>
 
@@ -390,8 +390,8 @@
           <div class="step" data-required="entry.795171499">
             <div class="question-no">05</div>
             <h2>어디에 살고 계세요?</h2>
-            <p class="hint">가까운 지역의 인연을 우선으로 소개해드려요. (예: 서울시 마포구)</p>
-            <input class="field" name="entry.795171499" autocomplete="off" placeholder="예: 서울시 마포구" />
+            <p class="hint">가까운 지역의 인연을 우선으로 소개해드려요. (예: 한남, 반포, 잠실, 판교)</p>
+            <input class="field" name="entry.795171499" autocomplete="off" placeholder="예: 한남, 반포, 잠실, 판교" />
             <div class="error"></div>
           </div>
 
@@ -666,6 +666,28 @@
           window.scrollTo(0, 0);
         }, 900);
       });
+      // 연락처: 숫자만 입력해도 가운데 하이픈 자동 삽입
+      (function () {
+        const ph = form.querySelector('[name="entry.938174224"]');
+        if (ph) ph.addEventListener('input', () => {
+          const d = ph.value.replace(/\D/g, '').slice(0, 11);
+          let out = d;
+          if (d.length >= 4 && d.length < 8) out = d.slice(0, 3) + '-' + d.slice(3);
+          else if (d.length >= 8 && d.length < 11) out = d.slice(0, 3) + '-' + d.slice(3, 6) + '-' + d.slice(6);
+          else if (d.length === 11) out = d.slice(0, 3) + '-' + d.slice(3, 7) + '-' + d.slice(7);
+          ph.value = out;
+        });
+      })();
+
+      // 라디오(성별·태어난 시각) 선택 시 자동으로 다음 단계로
+      ['entry.667211417', 'entry.1373720183'].forEach(nm => {
+        form.querySelectorAll('[name="' + nm + '"]').forEach(radio => {
+          radio.addEventListener('change', () => {
+            setTimeout(() => { if (validate()) { current += 1; render(); } }, 140);
+          });
+        });
+      });
+
       render();
     </script>
   </body>
