@@ -455,7 +455,7 @@
 
     <iframe name="submission-frame" title="Submission target"></iframe>
 
-    <script src="config.js"></script>
+    <script>document.write('<script src="config.js?v=' + Date.now() + '"><\/script>');</script>
     <script>
       const CFG = window.HONGYEON_CONFIG || {};
       const form = document.getElementById('hongyeon-form');
