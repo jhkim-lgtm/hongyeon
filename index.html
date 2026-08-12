@@ -481,7 +481,7 @@
         if (btn && CFG.channelAddUrl) { btn.href = CFG.channelAddUrl; btn.hidden = false; }
       })();
       const form = document.getElementById('hongyeon-form');
-      const steps = [...document.querySelectorAll('.step')];
+      let steps = [...document.querySelectorAll('.step')];
       const nextButton = document.getElementById('next');
       const backButton = document.getElementById('back');
       const submitButton = document.getElementById('submit');
@@ -548,9 +548,31 @@
       }
 
       // 카카오 로그인 직후 폼 진입.
-      // 채널 추가는 팝업 대신 '카카오싱크 간편가입 대표채널'로 로그인 동의화면에 통합(콘솔 설정).
-      // 완료화면 채널 추가 버튼(#add-channel)은 백업으로 유지.
+      // 카카오싱크로 이름·연락처가 들어오면 → 이름·성별·연락처·생년월일·동의 질문을 설문에서 자동 제외
+      //   (인스타·사는곳·태어난시각만 남김). 안 들어오면 전체 설문 유지(데이터 유실 방지).
+      // 채널 추가는 대표채널(카카오싱크)로 로그인 동의화면에 통합. 완료화면 버튼은 백업.
       function afterLogin() {
+        try {
+          const p = JSON.parse(sessionStorage.getItem('hy_kakao') || '{}');
+          if (p.name && p.phone) {
+            // 동의는 카카오 간편가입 동의로 갈음 → 자동 체크
+            const consent = form.querySelector('[name="entry.1451444338"][value="동의합니다"]');
+            if (consent) consent.checked = true;
+            // 카카오가 주는 항목의 스텝을 설문에서 제외(값은 히든으로 그대로 제출)
+            ['entry.1631997984', 'entry.667211417', 'entry.938174224', 'entry.267000997', 'entry.1451444338']
+              .forEach(nm => {
+                const el = form.querySelector('[name="' + nm + '"]');
+                const stepDiv = el && el.closest('.step');
+                if (stepDiv) { stepDiv.dataset.kakaoFilled = '1'; stepDiv.classList.remove('active'); }
+              });
+            steps = [...form.querySelectorAll('.step:not([data-kakao-filled])')];
+            steps.forEach((s, i) => {
+              const no = s.querySelector('.question-no');
+              if (no) no.textContent = String(i + 1).padStart(2, '0');
+            });
+            current = 0;
+          }
+        } catch (e) { /* 파싱 실패 시 전체 설문 유지 */ }
         enterForm();
       }
 
