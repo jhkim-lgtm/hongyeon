@@ -19,5 +19,9 @@ window.HONGYEON_CONFIG = {
   // 카카오톡 채널 '친구 추가' URL. 채널 관리자센터(center-pf.kakao.com) → 채널 → 상세설정 →
   // '채널 홈 URL'(http://pf.kakao.com/_XXXXX) 뒤에 /friend 를 붙인 값.
   // 예: "http://pf.kakao.com/_xhxhxhx/friend"  ← 이걸 넣으면 완료화면에 '채널 추가' 버튼이 켜짐.
-  channelAddUrl: "https://pf.kakao.com/_xaSNxgxj/friend"
+  channelAddUrl: "https://pf.kakao.com/_xaSNxgxj/friend",
+  // 카카오 로그인 직후 '채널 추가' 팝업(Kakao.Channel.addChannel)용.
+  // kakaoJsKey = 콘솔 '앱 키'의 JavaScript 키(REST키와 다름). 넣으면 로그인 직후 채널추가 팝업 자동.
+  kakaoJsKey: "",
+  channelPublicId: "_xaSNxgxj"
 };
