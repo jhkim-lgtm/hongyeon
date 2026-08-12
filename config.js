@@ -15,5 +15,9 @@ window.HONGYEON_CONFIG = {
   // 동의항목에서 '필수동의'로 승인된 항목 명시 요청 → 동의화면 표시 + user/me 수집.
   // (이미 프로필사진만 동의한 계정은 동의 캐시 때문에 시크릿창/연결끊기 후 재로그인해야 전체 동의 뜸)
   // 닉네임·이메일은 BK 지시로 제외.
-  scopes: "profile_image,name,gender,birthday,birthyear,phone_number"
+  scopes: "profile_image,name,gender,birthday,birthyear,phone_number",
+  // 카카오톡 채널 '친구 추가' URL. 채널 관리자센터(center-pf.kakao.com) → 채널 → 상세설정 →
+  // '채널 홈 URL'(http://pf.kakao.com/_XXXXX) 뒤에 /friend 를 붙인 값.
+  // 예: "http://pf.kakao.com/_xhxhxhx/friend"  ← 이걸 넣으면 완료화면에 '채널 추가' 버튼이 켜짐.
+  channelAddUrl: ""
 };
