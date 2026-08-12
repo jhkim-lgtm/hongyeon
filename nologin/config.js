@@ -13,5 +13,7 @@ window.HONGYEON_CONFIG = {
   // 이 앱은 Client Secret이 ON(myblocks 연동 때문에 유지). 프론트 토큰교환에 함께 전달.
   clientSecret: "ImeOXP3lDrcAoINSttV83PHNk3tEyTnm",
   // scopes 비움 = 동의항목 요청 없이 로그인(회원번호만 수집). KOE205 방지.
-  scopes: ""
+  scopes: "",
+  // 카카오톡 채널 '친구 추가' URL (http://pf.kakao.com/_XXXXX/friend) → 완료화면 '채널 추가' 버튼.
+  channelAddUrl: ""
 };
