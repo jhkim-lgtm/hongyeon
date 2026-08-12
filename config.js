@@ -22,6 +22,6 @@ window.HONGYEON_CONFIG = {
   channelAddUrl: "https://pf.kakao.com/_xaSNxgxj/friend",
   // 카카오 로그인 직후 '채널 추가' 팝업(Kakao.Channel.addChannel)용.
   // kakaoJsKey = 콘솔 '앱 키'의 JavaScript 키(REST키와 다름). 넣으면 로그인 직후 채널추가 팝업 자동.
-  kakaoJsKey: "",
+  kakaoJsKey: "286ea10312f2efb851228ecd573189b7",
   channelPublicId: "_xaSNxgxj"
 };
