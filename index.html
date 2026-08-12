@@ -549,13 +549,14 @@
         render();
       }
 
-      // 카카오 로그인 직후: 카카오톡 채널 추가 팝업(JS SDK) 띄우고 폼 진입
+      // 카카오 로그인 직후: 카카오톡 채널 추가 페이지를 팝업으로 열고 폼 진입
+      // (SDK addChannel 브릿지는 JS SDK 도메인 미등록 시 '잘못된 접근' → 인증체크 없는 일반 /friend URL 사용)
       function afterLogin() {
         try {
-          if (window.Kakao && Kakao.Channel && CFG.channelPublicId) {
-            Kakao.Channel.addChannel({ channelPublicId: CFG.channelPublicId });
+          if (CFG.channelAddUrl) {
+            window.open(CFG.channelAddUrl, 'hy_channel_add', 'width=460,height=640');
           }
-        } catch (e) { /* SDK 미로드/키 미설정 시 무시하고 진행 */ }
+        } catch (e) { /* 팝업 차단 시 무시 — 완료화면 버튼이 백업 */ }
         enterForm();
       }
 
