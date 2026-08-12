@@ -102,6 +102,11 @@
         font-weight: 800;
       }
       .cta-kakao svg { width: 22px; height: 22px; flex: 0 0 auto; }
+      .cta-continue {
+        width: min(640px, 100%); min-height: 52px; margin-top: 12px;
+        border: 1px solid var(--line); border-radius: 999px; background: transparent;
+        color: var(--white); font-size: 15px; font-weight: 700;
+      }
       .intro-note { width: 100%; margin: 14px 0 0; color: #7c6f72; font-size: 12px; text-align: center; }
       .dev-note { margin-top: 10px; color: #55414f; font-size: 11px; }
       .dev-note button { border: 0; background: none; color: #6f5560; font-size: 11px; text-decoration: underline; }
@@ -317,6 +322,20 @@
         </button>
         <p class="intro-note">가입 즉시 사주 분석이 시작됩니다 · 프로필은 매칭 상대에게만 공개됩니다</p>
         <p class="dev-note" id="dev-note" hidden><button type="button" id="dev-continue">카카오 없이 테스트로 계속하기</button></p>
+      </div>
+    </section>
+
+    <section class="intro" id="channel-gate" hidden>
+      <div class="intro-card">
+        <div style="font-size:52px;margin-bottom:14px">🧧</div>
+        <h1 style="font-size:clamp(26px,4.2vw,40px)">마지막 한 걸음!<br />카카오톡 채널을 추가하세요</h1>
+        <p class="intro-copy">매일 당신의 사주 인연 카드를 <b>카카오톡으로</b> 받아보려면<br />홍연 채널 추가가 필요해요. (10초면 끝나요)</p>
+        <a class="cta-kakao" id="gate-add" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C6.48 3 2 6.48 2 10.77c0 2.76 1.85 5.18 4.64 6.55l-.95 3.51c-.08.31.27.56.54.38l4.18-2.77c.52.07 1.05.11 1.59.11 5.52 0 10-3.48 10-7.78S17.52 3 12 3z" fill="#191600"/></svg>
+          카카오톡 채널 추가하기
+        </a>
+        <button class="cta-continue" id="gate-continue" type="button">채널 추가했어요, 계속하기 →</button>
+        <p class="dev-note"><button type="button" id="gate-skip">나중에 할게요</button></p>
       </div>
     </section>
 
@@ -538,9 +557,25 @@
       function enterForm() {
         started = true;
         document.getElementById('intro').style.display = 'none';
+        const gate = document.getElementById('channel-gate');
+        if (gate) gate.hidden = true;
         document.getElementById('app').hidden = false;
         window.scrollTo(0, 0);
         render();
+      }
+
+      // 카카오 로그인 직후: 채널 추가 화면(있으면) → 없으면 바로 폼
+      function afterLogin() {
+        const gate = document.getElementById('channel-gate');
+        const addBtn = document.getElementById('gate-add');
+        if (gate && addBtn && CFG.channelAddUrl) {
+          addBtn.href = CFG.channelAddUrl;
+          document.getElementById('intro').style.display = 'none';
+          gate.hidden = false;
+          window.scrollTo(0, 0);
+        } else {
+          enterForm();
+        }
       }
 
       async function exchangeCode(code) {
@@ -586,7 +621,7 @@
         try {
           const profile = await exchangeCode(code);
           saveKakaoProfile(profile);
-          enterForm();
+          afterLogin();
         } catch (e) {
           loginButton.disabled = false;
           loginButton.textContent = '카카오로 3초 만에 시작하기';
@@ -614,6 +649,10 @@
         saveKakaoProfile({ id: 'DEV-' + Date.now(), nickname: '(테스트)', email: '', profileImg: '' });
         enterForm();
       });
+
+      // 채널 추가 화면: '계속하기' / '나중에' → 폼 진입
+      document.getElementById('gate-continue').addEventListener('click', enterForm);
+      document.getElementById('gate-skip').addEventListener('click', enterForm);
 
       // 복귀 처리: 카카오 리다이렉트로 돌아온 경우 자동으로 폼 진입
       (function init() {
