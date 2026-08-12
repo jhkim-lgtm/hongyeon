@@ -549,14 +549,10 @@
         render();
       }
 
-      // 카카오 로그인 직후: 카카오톡 채널 추가 페이지를 팝업으로 열고 폼 진입
-      // (SDK addChannel 브릿지는 JS SDK 도메인 미등록 시 '잘못된 접근' → 인증체크 없는 일반 /friend URL 사용)
+      // 카카오 로그인 직후 폼 진입.
+      // 채널 추가는 팝업 대신 '카카오싱크 간편가입 대표채널'로 로그인 동의화면에 통합(콘솔 설정).
+      // 완료화면 채널 추가 버튼(#add-channel)은 백업으로 유지.
       function afterLogin() {
-        try {
-          if (CFG.channelAddUrl) {
-            window.open(CFG.channelAddUrl, 'hy_channel_add', 'width=460,height=640');
-          }
-        } catch (e) { /* 팝업 차단 시 무시 — 완료화면 버튼이 백업 */ }
         enterForm();
       }
 
