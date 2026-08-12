@@ -12,8 +12,8 @@ window.HONGYEON_CONFIG = {
   kakaoRestKey: "3c332eaa14dace9d7a5705280ba5381b",  // ← 카카오 REST API 키 (1%CLUB/myblocks 앱)
   // 이 앱은 Client Secret이 ON(myblocks 연동 때문에 유지). 프론트 토큰교환에 함께 전달.
   clientSecret: "lmeOXP3IDrcAoINSttV83PHNk3tEyTnm",
-  // 이 앱(1%CLUB/myblocks 공용)은 '개인정보 제3자 제공' 방식으로 프로필사진만 승인됨 → scope 무시됨.
-  // 로그인으로 수집 가능한 건 회원번호 + 프로필사진뿐. 나머지(이름·전화·생일 등)는 폼에서 입력받음.
-  // 이름·전화·생일 등을 카카오로 자동수집하려면 홍연 전용앱 + 카카오 비즈니스 검수 필요(별건).
-  scopes: ""
+  // 동의항목에서 '필수동의'로 승인된 항목 명시 요청 → 동의화면 표시 + user/me 수집.
+  // (이미 프로필사진만 동의한 계정은 동의 캐시 때문에 시크릿창/연결끊기 후 재로그인해야 전체 동의 뜸)
+  // 닉네임·이메일은 BK 지시로 제외.
+  scopes: "profile_image,name,gender,birthday,birthyear,phone_number"
 };
