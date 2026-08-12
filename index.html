@@ -490,6 +490,31 @@
           const avatar = document.getElementById('kakao-avatar');
           if (p.profileImg) avatar.src = p.profileImg; else avatar.style.display = 'none';
         }
+        prefillForm(p);
+      }
+
+      // 카카오 필수동의 정보로 폼 자동채움 (유저가 다시 입력 안 하도록 → 전환율↑)
+      function prefillForm(p) {
+        const setV = (name, val) => {
+          const el = form.querySelector(`[name="${name}"]`);
+          if (el && val && !el.value) el.value = val;
+        };
+        // 이름 (실명)
+        setV('entry.1631997984', p.name);
+        // 성별 라디오
+        if (p.gender) {
+          const g = p.gender === 'male' ? '남성' : p.gender === 'female' ? '여성' : '';
+          if (g) { const r = form.querySelector(`[name="entry.667211417"][value="${g}"]`); if (r) r.checked = true; }
+        }
+        // 연락처: '+82 10-1234-5678' → '010-1234-5678'
+        if (p.phone) {
+          let ph = p.phone.replace(/^\+82\s*/, '0').replace(/[^0-9]/g, '');
+          if (ph.length >= 10) setV('entry.938174224', ph.replace(/(\d{3})(\d{3,4})(\d{4})$/, '$1-$2-$3'));
+        }
+        // 생년월일: birthyear + birthday(MMDD) → YYYYMMDD (양력만 자동채움)
+        if (p.birthyear && /^\d{4}$/.test(p.birthday) && (p.birthdayType === 'SOLAR' || p.birthdayType === '')) {
+          setV('entry.267000997', p.birthyear + p.birthday);
+        }
       }
 
       function enterForm() {
@@ -523,7 +548,13 @@
           id: me.id,
           nickname: prof.nickname || '',
           profileImg: prof.profile_image_url || '',
-          email: acc.email || ''
+          email: acc.email || '',
+          name: acc.name || '',                 // 필수동의: 실명
+          gender: acc.gender || '',             // 'male' | 'female'
+          phone: acc.phone_number || '',        // '+82 10-1234-5678'
+          birthday: acc.birthday || '',         // 'MMDD'
+          birthdayType: acc.birthday_type || '',// 'SOLAR' | 'LUNAR'
+          birthyear: acc.birthyear || ''        // 'YYYY'
         };
       }
 
