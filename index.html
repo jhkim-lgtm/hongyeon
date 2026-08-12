@@ -472,7 +472,6 @@
 
     <iframe name="submission-frame" title="Submission target"></iframe>
 
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.2/kakao.min.js"></script>
     <script>document.write('<script src="config.js?v=' + Date.now() + '"><\/script>');</script>
     <script>
       const CFG = window.HONGYEON_CONFIG || {};
@@ -627,13 +626,6 @@
         saveKakaoProfile({ id: 'DEV-' + Date.now(), nickname: '(테스트)', email: '', profileImg: '' });
         enterForm();
       });
-
-      // 카카오 JS SDK 초기화 (채널 추가 addChannel 용) — JavaScript 키 필요
-      try {
-        if (window.Kakao && CFG.kakaoJsKey && !Kakao.isInitialized()) {
-          Kakao.init(CFG.kakaoJsKey);
-        }
-      } catch (e) { /* 키 미설정 시 무시 */ }
 
       // 복귀 처리: 카카오 리다이렉트로 돌아온 경우 자동으로 폼 진입
       (function init() {
