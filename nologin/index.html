@@ -329,7 +329,7 @@
           <div class="perks">
             <span>🧧 정통 사주팔자 기반 궁합 분석</span>
             <span>🤝 지인 네트워크로 검증된 사람들</span>
-            <span>💌 찰떡궁합인데, 외모도 내 스타일이라면<br />사주도 외모도 내 이상형을 만나보세요</span>
+            <span>💌 찰떡궁합인데, 외모도 내 스타일이라면</span>
           </div>
           <div class="kakao-badge" id="kakao-badge" hidden>
             <img id="kakao-avatar" alt="" />
@@ -476,7 +476,20 @@
         if (btn && CFG.channelAddUrl) { btn.href = CFG.channelAddUrl; btn.hidden = false; }
       })();
       const form = document.getElementById('hongyeon-form');
-      const steps = [...document.querySelectorAll('.step')];
+            // 질문 순서: 태어난시각 → 사는곳 → 인스타
+      const STEP_ORDER = ['entry.1373720183', 'entry.795171499', 'entry.294138297',
+                          'entry.1631997984', 'entry.667211417', 'entry.938174224',
+                          'entry.267000997', 'entry.1451444338'];
+      function orderedSteps(excludeFilled) {
+        return STEP_ORDER
+          .map(nm => { const el = form.querySelector('[name="' + nm + '"]'); return el ? el.closest('.step') : null; })
+          .filter(s => s && (!excludeFilled || !s.dataset.kakaoFilled));
+      }
+      function renumber() {
+        steps.forEach((s, i) => { const no = s.querySelector('.question-no'); if (no) no.textContent = String(i + 1).padStart(2, '0'); });
+      }
+      let steps = orderedSteps(false);
+      renumber();
       const nextButton = document.getElementById('next');
       const backButton = document.getElementById('back');
       const submitButton = document.getElementById('submit');
