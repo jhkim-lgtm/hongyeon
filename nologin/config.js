@@ -15,5 +15,5 @@ window.HONGYEON_CONFIG = {
   // scopes 비움 = 동의항목 요청 없이 로그인(회원번호만 수집). KOE205 방지.
   scopes: "",
   // 카카오톡 채널 '친구 추가' URL (http://pf.kakao.com/_XXXXX/friend) → 완료화면 '채널 추가' 버튼.
-  channelAddUrl: "http://pf.kakao.com/_xaSNxgxj/friend"
+  channelAddUrl: "https://pf.kakao.com/_xaSNxgxj/friend"
 };
