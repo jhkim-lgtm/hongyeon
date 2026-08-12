@@ -12,6 +12,8 @@ window.HONGYEON_CONFIG = {
   kakaoRestKey: "3c332eaa14dace9d7a5705280ba5381b",  // ← 카카오 REST API 키 (1%CLUB/myblocks 앱)
   // 이 앱은 Client Secret이 ON(myblocks 연동 때문에 유지). 프론트 토큰교환에 함께 전달.
   clientSecret: "lmeOXP3IDrcAoINSttV83PHNk3tEyTnm",
-  // scopes 비움 = 동의항목 요청 없이 로그인(회원번호만 수집). KOE205 방지.
-  scopes: ""
+  // 동의항목 설정에서 '필수동의'로 켜진 항목들을 명시 요청 → 동의화면에 표시되고 user/me로 수집됨.
+  // (필수동의라도 scope에 없으면 요청 안 됨 — 이 앱은 profile_image만 자동이었음)
+  // 이름·성별·생일·출생연도·전화번호·프로필사진 수집. 닉네임·이메일은 BK 지시로 제외.
+  scopes: "profile_image,name,gender,birthday,birthyear,phone_number"
 };
