@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>홍연 紅緣 — 앱 데모</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0A122B" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", Arial, sans-serif;
+        --bg: #0A122B; --bg2: #070D1F; --panel: #101A38; --panel2: #15214A; --line: #26335C;
+        --gold: #C9A44E; --gold-hi: #E6CB86; --gold-soft: rgba(201, 164, 78, .32);
+        --muted: #939CBB; --accent: #ff8b96; --deep: #d6485a; --white: #f7f5ec; --seal: #c43b47;
+        --wave: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22%230A122B%22%2F%3E%3Cg%20stroke%3D%22%23C9A44E%22%20stroke-opacity%3D%220.16%22%20stroke-width%3D%221%22%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2220%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2220%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2220%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2220%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2220%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2220%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2220%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2220%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2220%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2220%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2260%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2260%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2260%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2260%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%2260%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2260%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2260%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2260%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2260%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2260%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2260%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2260%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2260%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2260%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2260%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2280%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2280%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2280%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2280%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2280%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2280%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2280%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2280%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2280%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2280%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%22100%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%22100%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%22100%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%22100%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22-40%22%20cy%3D%22100%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22100%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22100%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22100%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22100%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22100%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%22100%22%20r%3D%2239.5%22%20fill%3D%22%230A122B%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%22100%22%20r%3D%2231%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%22100%22%20r%3D%2223%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%22100%22%20r%3D%2215%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%22100%22%20r%3D%227%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+        --serif: "Noto Serif KR", "Apple SD Gothic Neo", serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #04060f; color: var(--white); }
+      .frame {
+        max-width: 430px; min-height: 100dvh; margin: 0 auto; position: relative;
+        background:
+          radial-gradient(560px 380px at 88% -6%, rgba(214, 72, 90, .16), transparent 62%),
+          radial-gradient(520px 420px at -12% 108%, rgba(201, 164, 78, .09), transparent 56%),
+          var(--wave) repeat,
+          var(--bg);
+        background-size: auto, auto, 80px 80px, auto;
+        display: flex; flex-direction: column;
+      }
+      header { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 12px; border-bottom: 1px solid rgba(201, 164, 78, .16); }
+      .wordmark { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-weight: 900; letter-spacing: .02em; }
+      .wordmark svg { width: 30px; height: 30px; }
+      .wordmark small { color: var(--gold-hi); font-weight: 700; }
+      .wallet { display: flex; gap: 8px; font-size: 12px; color: #d5dae8; }
+      .wallet span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); }
+      .wallet b { color: var(--gold-hi); }
+
+      main { flex: 1; padding: 6px 20px 96px; }
+      .tab { display: none; animation: enter .22s ease; }
+      .tab.active { display: block; }
+      @keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+      .daily-kicker { margin: 12px 0 4px; color: var(--gold-hi); font-family: var(--serif); font-size: 12px; font-weight: 700; letter-spacing: .24em; }
+      .daily-title { margin: 0 0 14px; font-family: var(--serif); font-size: 24px; font-weight: 900; letter-spacing: -.01em; line-height: 1.3; }
+
+      .card { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--panel); box-shadow: 0 0 0 1px rgba(201, 164, 78, .10), 0 18px 44px rgba(2, 4, 12, .5); }
+      .card .photo { position: relative; aspect-ratio: 4/4.6; background: #0d1531; }
+      .card .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .via {
+        position: absolute; top: 14px; left: 14px; padding: 7px 12px; border-radius: 999px;
+        background: rgba(7, 13, 31, .74); backdrop-filter: blur(6px);
+        border: 1px solid rgba(201, 164, 78, .28);
+        color: var(--gold-hi); font-size: 12px; font-weight: 700;
+      }
+      .scorebadge {
+        position: absolute; right: 14px; bottom: -30px; width: 76px; height: 76px; border-radius: 50%;
+        display: grid; place-items: center; background:
+          conic-gradient(var(--deep) calc(var(--p) * 1%), #1b2547 0);
+        box-shadow: 0 0 0 1px rgba(201, 164, 78, .28);
+      }
+      .scorebadge::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: #0d1531; }
+      .scorebadge div { position: relative; text-align: center; line-height: 1.05; }
+      .scorebadge b { font-size: 21px; color: var(--accent); }
+      .scorebadge small { display: block; font-size: 9px; color: var(--muted); margin-top: 2px; }
+      .card .info { padding: 18px 18px 16px; }
+      .card h2 { margin: 0 0 4px; font-family: var(--serif); font-size: 22px; letter-spacing: -.01em; }
+      .card .meta { color: var(--muted); font-size: 13.5px; }
+      .grade { display: inline-flex; margin-top: 10px; padding: 6px 11px; border-radius: 999px; background: #331525; border: 1px solid rgba(214, 72, 90, .38); color: var(--accent); font-size: 12.5px; font-weight: 800; }
+      .headline { margin: 12px 0 0; color: #dfe2ee; font-size: 14.5px; line-height: 1.55; }
+
+      .actions { display: grid; grid-template-columns: 56px 1fr 1fr; gap: 10px; margin-top: 14px; }
+      .actions button { min-height: 54px; border-radius: 14px; border: 1px solid var(--line); background: var(--panel); color: #d5dae8; font-weight: 800; font-size: 14px; }
+      .actions .send { border: 0; background: linear-gradient(135deg, var(--deep), var(--accent)); color: #fff; }
+      .actions .report { border-color: var(--gold-soft); color: var(--gold-hi); }
+
+      .teaser { display: flex; gap: 10px; align-items: center; margin-top: 18px; padding: 13px 14px; border: 1px dashed #3a4670; border-radius: 14px; color: var(--muted); font-size: 13px; }
+      .teaser img { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; filter: blur(6px) brightness(.75); }
+
+      .section-title { margin: 18px 0 10px; font-family: var(--serif); font-size: 16px; font-weight: 900; }
+      .list { display: grid; gap: 10px; }
+      .row { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+      .row img { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; }
+      .row .r-main { flex: 1; min-width: 0; }
+      .row .r-main b { font-size: 15px; }
+      .row .r-main div { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+      .row .pct { color: var(--accent); font-weight: 900; font-size: 15px; }
+      .row button { border: 0; border-radius: 10px; background: #fee500; color: #191600; font-size: 12px; font-weight: 800; padding: 9px 11px; }
+      .empty { padding: 26px 0; color: #5b6488; text-align: center; font-size: 13.5px; }
+
+      .sku { border: 1px solid var(--line); border-radius: 16px; background: var(--panel); padding: 18px; margin-bottom: 12px; position: relative; }
+      .sku.best { border-color: var(--gold-soft); background: linear-gradient(160deg, rgba(201, 164, 78, .14), var(--panel) 62%); box-shadow: 0 0 0 1px rgba(201, 164, 78, .12); }
+      .sku .tag { position: absolute; top: -10px; right: 16px; padding: 4px 10px; border-radius: 999px; background: linear-gradient(135deg, var(--gold-hi), var(--gold)); color: #241a05; font-size: 11px; font-weight: 800; }
+      .sku h3 { margin: 0 0 4px; font-family: var(--serif); font-size: 16px; }
+      .sku p { margin: 0 0 12px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .sku .buy { display: flex; align-items: center; justify-content: space-between; }
+      .sku .price { font-size: 18px; font-weight: 900; }
+      .sku .price small { color: var(--muted); font-size: 11px; font-weight: 400; }
+      .sku button { border: 0; border-radius: 12px; padding: 11px 16px; background: linear-gradient(135deg, var(--gold-hi), var(--gold)); color: #241a05; font-weight: 800; }
+
+      .my-card { border: 1px solid var(--line); border-radius: 16px; background: var(--panel); padding: 18px; margin-bottom: 12px; }
+      .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+      .pillar { text-align: center; padding: 12px 4px; border-radius: 12px; background: var(--panel2); border: 1px solid var(--line); }
+      .pillar small { display: block; color: var(--muted); font-size: 10.5px; margin-bottom: 5px; }
+      .pillar b { font-family: var(--serif); font-size: 15px; color: var(--gold-hi); }
+      .elem-bars { display: grid; gap: 7px; margin-top: 14px; }
+      .elem-bars .eb { display: grid; grid-template-columns: 30px 1fr 20px; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); }
+      .eb .bar { height: 7px; border-radius: 99px; background: #1b2547; overflow: hidden; }
+      .eb .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--deep), var(--accent)); }
+      .ghost { width: 100%; min-height: 50px; margin-top: 4px; border: 1px solid var(--gold-soft); border-radius: 14px; background: transparent; color: var(--gold-hi); font-weight: 700; }
+
+      nav {
+        position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+        width: min(430px, 100%); display: grid; grid-template-columns: repeat(4, 1fr);
+        padding: 8px 10px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(6, 10, 24, .93); backdrop-filter: blur(10px); border-top: 1px solid rgba(201, 164, 78, .18);
+      }
+      nav button { border: 0; background: none; color: #667097; font-size: 10.5px; display: grid; gap: 4px; justify-items: center; padding: 7px 0; font-weight: 700; }
+      nav button .ico { font-size: 20px; }
+      nav button.on { color: var(--accent); }
+
+      dialog {
+        width: min(400px, calc(100vw - 32px)); border: 1px solid var(--gold-soft); border-radius: 18px;
+        background: #0d1428; color: var(--white); padding: 0;
+      }
+      dialog::backdrop { background: rgba(2, 4, 12, .76); }
+      .modal-body { padding: 22px; max-height: 76dvh; overflow-y: auto; }
+      .modal-body h3 { margin: 0 0 2px; font-family: var(--serif); font-size: 19px; }
+      .modal-body .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+      .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; }
+      .duo .side { border: 1px solid var(--line); border-radius: 14px; padding: 12px; background: var(--panel); font-size: 12px; color: var(--muted); }
+      .duo .side b { display: block; color: var(--gold-hi); font-family: var(--serif); font-size: 13px; margin-bottom: 6px; }
+      .factor { margin: 8px 0 0; padding: 11px 13px; border-radius: 12px; font-size: 13px; line-height: 1.5; }
+      .factor.good { background: #13261e; color: #c8e4c9; }
+      .factor.bad { background: #2c1420; color: #efc5cd; }
+      .modal-close { width: 100%; min-height: 52px; border: 0; border-top: 1px solid #1c2748; background: none; color: var(--gold-hi); font-weight: 800; }
+      .toast {
+        position: fixed; left: 50%; bottom: 92px; transform: translateX(-50%);
+        padding: 12px 18px; border-radius: 999px; background: #1a1030; background: #241322; border: 1px solid #52293a;
+        color: #ffd9dd; font-size: 13.5px; font-weight: 700; opacity: 0; pointer-events: none; transition: opacity .25s;
+        max-width: calc(100vw - 40px); text-align: center; z-index: 50;
+      }
+      .toast.show { opacity: 1; }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <header>
+        <div class="wordmark">
+          <svg viewBox="0 0 96 96" fill="none"><circle cx="48" cy="48" r="44" stroke="#C9A44E" stroke-width="4"/><circle cx="48" cy="48" r="36" stroke="#C9A44E" stroke-width="1.5" opacity=".4"/><path d="M20 62c14-26 26 8 38-14 6-11 14-12 18-6" stroke="#d6485a" stroke-width="6" stroke-linecap="round"/><circle cx="20" cy="62" r="4" fill="#ff8b96"/><circle cx="76" cy="42" r="4" fill="#ff8b96"/></svg>
+          홍연 <small>紅緣</small>
+        </div>
+        <div class="wallet"><span>열람권 <b id="w-view">-</b></span><span>홍연 <b id="w-send">-</b></span></div>
+      </header>
+
+      <main>
+        <!-- 오늘의 인연 -->
+        <section class="tab active" id="tab-today">
+          <div class="daily-kicker">TODAY'S 紅緣</div>
+          <h1 class="daily-title" id="today-title">오늘, 사주가 점지한 단 한 사람</h1>
+          <div class="card" id="today-card"></div>
+          <div class="teaser" id="teaser"></div>
+        </section>
+
+        <!-- 인연함 -->
+        <section class="tab" id="tab-box">
+          <div class="section-title">나를 지목한 인연</div>
+          <div class="list" id="received-list"></div>
+          <div class="section-title">내가 보낸 홍연</div>
+          <div class="list" id="sent-list"><div class="empty">아직 보낸 홍연이 없어요. 오늘의 인연에게 💌를 보내보세요.</div></div>
+          <div class="section-title">성사된 매칭</div>
+          <div class="list" id="match-list"><div class="empty">서로의 홍연이 만나면 여기서 카카오톡으로 연결돼요.</div></div>
+        </section>
+
+        <!-- 스토어 -->
+        <section class="tab" id="tab-store">
+          <div class="section-title">스토어</div>
+          <div class="sku best">
+            <span class="tag">추천 ⭐</span>
+            <h3>천생연분 PASS (월간)</h3>
+            <p>매일 인연 카드 + 궁합 리포트 무제한 열람 + 매달 홍연(매칭 신청권) 5개. 진심인 분들을 위한 플랜.</p>
+            <div class="buy"><span class="price">29,000원<small> /월 · VAT 포함</small></span><button data-buy="pass">구독하기</button></div>
+          </div>
+          <div class="sku">
+            <h3>인연 카드 열람권</h3>
+            <p>궁합 리포트 전문과 상대 프로필 상세(인스타 포함)를 열람합니다.</p>
+            <div class="buy"><span class="price">3,900원<small> /1회 · 10회 29,000원</small></span><button data-buy="view">구매하기</button></div>
+          </div>
+          <div class="sku">
+            <h3>홍연 — 매칭 신청권</h3>
+            <p>마음에 드는 인연에게 만남을 신청합니다. 상대가 수락하면 카카오톡으로 연결됩니다.</p>
+            <div class="buy"><span class="price">9,900원<small> /1개 · 5개 39,000원</small></span><button data-buy="send">구매하기</button></div>
+          </div>
+          <p style="color:#6f6266;font-size:11.5px;line-height:1.6">데모 화면입니다 — 결제는 실제로 진행되지 않으며, 상용 버전에서 토스페이먼츠/인앱결제가 연결됩니다. 환불 규정은 전자상거래법 청약철회 기준을 따릅니다.</p>
+        </section>
+
+        <!-- MY -->
+        <section class="tab" id="tab-my">
+          <div class="my-card" id="my-saju"></div>
+          <div class="my-card">
+            <b>내 인연 풀 넓히기</b>
+            <p style="color:var(--muted);font-size:13px;line-height:1.55;margin:8px 0 12px">홍연은 지인의 친구를 소개하는 서비스라, 친구가 많이 들어올수록 내 인연의 품질이 올라가요.</p>
+            <button class="ghost" id="copy-link">📎 가입 링크 복사하기</button>
+          </div>
+          <div class="my-card" style="color:#6f6266;font-size:12px;line-height:1.7">
+            알림: 카카오톡으로 매일 21:00 인연 카드 발송<br />
+            개인정보·탈퇴 문의: info@1percentclub.kr
+          </div>
+        </section>
+      </main>
+
+      <nav>
+        <button class="on" data-tab="today"><span class="ico">🧧</span>오늘의 인연</button>
+        <button data-tab="box"><span class="ico">💌</span>인연함</button>
+        <button data-tab="store"><span class="ico">🎟️</span>스토어</button>
+        <button data-tab="my"><span class="ico">🀄</span>MY</button>
+      </nav>
+
+      <dialog id="report-modal">
+        <div class="modal-body" id="report-body"></div>
+        <button class="modal-close" onclick="document.getElementById('report-modal').close()">닫기</button>
+      </dialog>
+      <div class="toast" id="toast"></div>
+    </div>
+
+    <script src="saju.js"></script>
+    <script src="data.js?v=2"></script>
+    <script>
+      const ME = window.HY_ME;
+      const meP = Saju.pillars(...Saju.parseBirth(ME.birth), ME.hour);
+      let state = JSON.parse(localStorage.getItem('hy_state') || 'null');
+      if (!state || state.v !== 2) state = { v: 2, view: 1, send: 1, sent: [], passed: [], matched: [] };
+      const save = () => localStorage.setItem('hy_state', JSON.stringify(state));
+
+      const candidates = window.HY_PROFILES
+        .filter(p => p.gender !== ME.gender)
+        .map(p => {
+          const pp = Saju.pillars(...Saju.parseBirth(p.birth), p.hour);
+          return { ...p, pillars: pp, compat: Saju.compat(meP, pp) };
+        })
+        .sort((a, b) => b.compat.score - a.compat.score);
+
+      const queue = () => candidates.filter(c => !state.sent.includes(c.name) && !state.passed.includes(c.name));
+      const age = b => new Date().getFullYear() - +b.slice(0, 4);
+
+      function toast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg; t.classList.add('show');
+        clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2400);
+      }
+      function wallet() {
+        document.getElementById('w-view').textContent = state.pass ? '∞' : state.view;
+        document.getElementById('w-send').textContent = state.send;
+      }
+
+      function renderToday() {
+        const q = queue();
+        const el = document.getElementById('today-card');
+        const teaser = document.getElementById('teaser');
+        if (!q.length) {
+          el.innerHTML = '<div class="info"><h2>오늘의 인연을 모두 확인했어요</h2><p class="headline">내일 21:00, 새로운 인연 카드가 카카오톡으로 도착합니다.</p></div>';
+          teaser.innerHTML = '';
+          return;
+        }
+        const c = q[0];
+        el.innerHTML = `
+          <div class="photo">
+            <img src="${c.photo}" alt="" />
+            <div class="via">🤝 ${c.via}의 친구</div>
+            <div class="scorebadge" style="--p:${c.compat.score}"><div><b>${c.compat.score}</b><small>궁합점수</small></div></div>
+          </div>
+          <div class="info">
+            <h2>${c.name} <span style="font-weight:400;color:var(--muted);font-size:16px">${age(c.birth)}세</span></h2>
+            <div class="meta">${c.region} · ${c.job}</div>
+            <span class="grade">${c.compat.grade}</span>
+            <p class="headline">${c.compat.headline}</p>
+            <div class="actions">
+              <button onclick="passCard('${c.name}')">✕</button>
+              <button class="report" onclick="openReport('${c.name}')">궁합 리포트</button>
+              <button class="send" onclick="sendHong('${c.name}')">💌 홍연 보내기</button>
+            </div>
+          </div>`;
+        const nxt = q[1];
+        teaser.innerHTML = nxt
+          ? `<img src="${nxt.photo}" alt="" /><div>내일의 인연 미리보기 — <b style="color:#ffd9dd">${nxt.compat.score}점</b>의 ${nxt.via}의 친구가 기다리고 있어요.</div>`
+          : '';
+      }
+
+      function pillarsHTML(p, label) {
+        return `<div class="side"><b>${label}</b>
+          년주 ${p.text.year}<br />월주 ${p.text.month}<br />일주 ${p.text.day}<br />시주 ${p.text.hour}</div>`;
+      }
+
+      window.openReport = name => {
+        const c = candidates.find(x => x.name === name);
+        if (!state.pass && state.view <= 0) { toast('열람권이 없어요 — 스토어에서 충전해주세요 🎟️'); switchTab('store'); return; }
+        if (!state.pass) { state.view--; save(); wallet(); }
+        const b = document.getElementById('report-body');
+        b.innerHTML = `
+          <h3>${ME.name} ♥ ${c.name} 궁합 리포트</h3>
+          <div class="sub">${c.compat.grade} · ${c.compat.score}점 — ${c.compat.headline}</div>
+          <div class="duo">${pillarsHTML(meP, ME.name)}${pillarsHTML(c.pillars, c.name)}</div>
+          ${c.compat.good.map(g => `<div class="factor good">✚ ${g}</div>`).join('')}
+          ${c.compat.bad.map(g => `<div class="factor bad">— ${g}</div>`).join('')}
+          <div class="factor" style="background:#1c1620;color:#d9cbe2">📸 인스타그램 ${c.insta} — 얼굴까지 마음에 든다면, 홍연을 보내보세요.</div>`;
+        document.getElementById('report-modal').showModal();
+      };
+
+      window.sendHong = name => {
+        if (state.send <= 0) { toast('홍연(매칭 신청권)이 없어요 — 스토어에서 충전해주세요 💌'); switchTab('store'); return; }
+        state.send--; state.sent.push(name);
+        // 데모: 80점 이상 상대는 수락한 것으로 연출
+        const c = candidates.find(x => x.name === name);
+        if (c.compat.score >= 80) state.matched.push(name);
+        save(); wallet(); renderToday(); renderBox();
+        toast(c.compat.score >= 80 ? `${name}님이 홍연을 받았어요! 인연함을 확인하세요 💘` : `${name}님에게 홍연을 보냈어요. 수락하면 알려드릴게요.`);
+      };
+
+      window.passCard = name => { state.passed.push(name); save(); renderToday(); };
+
+      function renderBox() {
+        const rec = candidates.slice(1, 3);
+        document.getElementById('received-list').innerHTML = rec.map(c => `
+          <div class="row"><img src="${c.photo}" alt="" />
+            <div class="r-main"><b>${c.name}</b><div>${c.via}의 친구 · ${c.region}</div></div>
+            <span class="pct">${c.compat.score}점</span></div>`).join('');
+        const sent = state.sent.filter(n => !state.matched.includes(n));
+        document.getElementById('sent-list').innerHTML = sent.length
+          ? sent.map(n => { const c = candidates.find(x => x.name === n); return `
+            <div class="row"><img src="${c.photo}" alt="" />
+              <div class="r-main"><b>${c.name}</b><div>수락 대기 중…</div></div><span class="pct">${c.compat.score}점</span></div>`; }).join('')
+          : '<div class="empty">아직 보낸 홍연이 없어요. 오늘의 인연에게 💌를 보내보세요.</div>';
+        document.getElementById('match-list').innerHTML = state.matched.length
+          ? state.matched.map(n => { const c = candidates.find(x => x.name === n); return `
+            <div class="row"><img src="${c.photo}" alt="" />
+              <div class="r-main"><b>${c.name}</b><div>매칭 성사! 🎉</div></div>
+              <button onclick="toast('상용 버전에서 카카오톡 오픈채팅/연락처가 전달됩니다 💬')">카카오톡 연결</button></div>`; }).join('')
+          : '<div class="empty">서로의 홍연이 만나면 여기서 카카오톡으로 연결돼요.</div>';
+      }
+
+      function renderMy() {
+        const e = meP.elements;
+        const max = Math.max(...Object.values(e), 1);
+        document.getElementById('my-saju').innerHTML = `
+          <b>${ME.name}님의 사주 프로필</b>
+          <div style="color:var(--muted);font-size:13px;margin-top:4px">${ME.birth} · ${meP.zodiac}띠 · 일간 ${meP.dayMaster}(${meP.dayMasterElem})</div>
+          <div class="pillar-grid">
+            <div class="pillar"><small>년주</small><b>${meP.text.year.slice(0, 2)}</b></div>
+            <div class="pillar"><small>월주</small><b>${meP.text.month.slice(0, 2)}</b></div>
+            <div class="pillar"><small>일주</small><b>${meP.text.day.slice(0, 2)}</b></div>
+            <div class="pillar"><small>시주</small><b>${meP.hour ? meP.text.hour.slice(0, 2) : '미상'}</b></div>
+          </div>
+          <div class="elem-bars">
+            ${Saju.ELEMS.map(el => `<div class="eb"><span>${el}</span><span class="bar"><i style="width:${(e[el] / max) * 100}%"></i></span><span>${e[el]}</span></div>`).join('')}
+          </div>`;
+      }
+
+      document.querySelectorAll('[data-buy]').forEach(b => b.addEventListener('click', () => {
+        const k = b.dataset.buy;
+        if (k === 'pass') { state.pass = true; state.send += 5; toast('천생연분 PASS 구독 완료 (데모) — 리포트 무제한 + 홍연 5개 지급!'); }
+        if (k === 'view') { state.view += 1; toast('열람권 1개가 충전됐어요 (데모)'); }
+        if (k === 'send') { state.send += 1; toast('홍연 1개가 충전됐어요 (데모)'); }
+        save(); wallet();
+      }));
+
+      document.getElementById('copy-link').addEventListener('click', async () => {
+        const url = location.origin + location.pathname.replace(/app\/?$/, '');
+        try { await navigator.clipboard.writeText(url); toast('가입 링크가 복사됐어요 — 친구에게 공유해보세요!'); }
+        catch { toast(url); }
+      });
+
+      window.switchTab = name => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.id === 'tab-' + name));
+        document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.tab === name));
+      };
+      document.querySelectorAll('nav button').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+
+      wallet(); renderToday(); renderBox(); renderMy();
+    </script>
+  </body>
+</html>
